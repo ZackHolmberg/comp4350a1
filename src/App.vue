@@ -1,16 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <input v-model="tag" class="form-control" required />
+    <button @click="searchTag(tag)">
+      Look up tag!
+    </button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld
-  }
+  methods: {
+    searchTag(tag) {
+      console.log(tag);
+      this.axios
+        .get(
+          "https://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged=" +
+            encodeURIComponent(tag)
+        )
+        .then((response) => console.log(response));
+    },
+  },
 };
 </script>
 
