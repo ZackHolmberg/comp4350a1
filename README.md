@@ -27,3 +27,5 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+docker run -p 8080:8080 zackholmb/comp4350a1
